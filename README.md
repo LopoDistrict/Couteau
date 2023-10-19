@@ -12,6 +12,7 @@ At the begin you need to precise some attributes: 1- Words commonly used by the 
                                                   5 - Limit (Doesnt work properly)
                                                   6- filename
                                                   7 - directory
+```                                                  
                                                   
 COMMANDS / ARGS                                     DESCRIPTION:
                -n or --name [name of the rendered file]            => Name of the rendered file. (Default : pswd_dictionnary)
@@ -23,10 +24,9 @@ COMMANDS / ARGS                                     DESCRIPTION:
                -l or --limit [limit]                               => Limit of Pswd/word that can be include in the file(Default: 500)   
                -r or --render [ex: .txt]                           => Extension of the rendered file (Default: .txt)
                -dir or --directory                                 => Directory of the rendered file. (Default is \Couteau\Rendered)
-
-                e or exit                                          => quit command
-                c or cls or clear                                  => clear command   
-
+                -e or exit                                          => quit command
+                -c or cls or clear                                  => clear command   
+```
 # Beginning
 ## Since the project is under construction it might have bugs
 - Make sure you have shutil installed
