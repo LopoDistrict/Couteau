@@ -7,13 +7,15 @@ It also use, some leak + dehashed password  from secure database to guarantee th
 
 
 # functionning
-At the begin you need to precise some attributes:  1. Words commonly used by the target
-                                                   1. Depth => Depth levels are from 1 to 5 to higher is th depth the stronger will be the list and couteau will try to find more about everything you indicates
-                                                   1. Birth day
-                                                   1. file rendered extension
-                                                   1. Limit (Doesnt work properly)
-                                                   1. filename
-                                                   1. directory
+At the begin you need to precise some attributes: 
+
+1. Words commonly used by the target
+1. Depth => Depth levels are from 1 to 5 to higher is th depth the stronger will be the list and couteau will try to find more about everything you indicates
+1. Birth day
+1. file rendered extension
+1. Limit (Doesnt work properly)
+1. filename
+1. directory
 ```                                                  
                                                   
 COMMANDS / ARGS                                     DESCRIPTION:
