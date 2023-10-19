@@ -1,3 +1,12 @@
+```
+     ______________________________ ______________________
+    .'                              | (_)     (_)    (_)  |
+  .'                                |  __________________ |
+.'_.............................____|_(                  )|
+
+``` 
+
+
 # Warning Couteau is still in open build and you need to modify Couteau\main.py to start an attack
 # Couteau
 Couteau is a Hybrid worldlist/dictionnary generator that used different level of generation to adapt to password security.
