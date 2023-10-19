@@ -3,15 +3,17 @@
 Couteau is a Hybrid worldlist/dictionnary generator that used different level of generation to adapt to password security.
 It also use, some leak + dehashed password  from secure database to guarantee the sucess of the attack
 
-# functioning
-At the begin you need to precise some attributes: 1- Words commonly used by the target
-                                                  2 - Depth => Depth levels are from 1 to 5
-                                                  to higher is th depth the stronger will be the list and couteau will try to find more about everything you indicates
-                                                  3 - Birth day
-                                                  4 - file rendered extension
-                                                  5 - Limit (Doesnt work properly)
-                                                  6- filename
-                                                  7 - directory
+
+
+
+# functionning
+At the begin you need to precise some attributes:  1. Words commonly used by the target
+                                                   1. Depth => Depth levels are from 1 to 5 to higher is th depth the stronger will be the list and couteau will try to find more about everything you indicates
+                                                   1. Birth day
+                                                   1. file rendered extension
+                                                   1. Limit (Doesnt work properly)
+                                                   1. filename
+                                                   1. directory
 ```                                                  
                                                   
 COMMANDS / ARGS                                     DESCRIPTION:
@@ -27,6 +29,9 @@ COMMANDS / ARGS                                     DESCRIPTION:
                 -e or exit                                          => quit command
                 -c or cls or clear                                  => clear command   
 ```
+
+
+
 # Beginning
 ## Since the project is under construction it might have bugs
 - Make sure you have shutil installed
