@@ -59,7 +59,7 @@ class Pswd:
        self.choice()
 
     def Checking(self):
-        if self.words == "" or self.limit <= 0:
+        if self.limit <= 0: 
             False
         elif len(self.bday) != 10 and self.bday != False:
             return False
@@ -121,6 +121,7 @@ class Pswd:
 
     def Process(self):
         count = 0
+        self.words = input("Enter commonly used word, separated by a space: ")
         with open(f"{self.file_name}{self.render}", "a", encoding="utf-8") as file:
             if self.depth == 1:
                 sys.stdout.write('\rloading [--------------------] 0%')
@@ -236,6 +237,8 @@ class Pswd:
                     for k in range(100):
                         #try to detect with all numbers frm 1 to 100
                         file.write(i + str(k) + '\n')
+                    sys.stdout.write('\r loading [####################] 100%')
+                    sys.stdout.flush()
                 self.finish()
             
             if self.depth == 3:
@@ -345,8 +348,13 @@ class Pswd:
             
 
 
+
+
+
             if self.depth == 5:
                 """Last Depth of the beta [+]Strong password [-] leak db password"""
+                print("[+]Average size for 1 word : 15ko")
+                print("[+]Average password for 1 word : 15000 lines")
 
                 if self.bday == False:
                     pass
@@ -388,7 +396,10 @@ class Pswd:
                 word = []
                 temp = ""
                 self.words = self.words + " " 
+
                 #print(repr(self.words))
+                sys.stdout.write('\rloading [--------------------] 0%')
+                sys.stdout.flush()
                 for l in self.words:
                     if l == " ":
                         word.append(temp)
@@ -412,6 +423,10 @@ class Pswd:
                         file.write(i.replace("O", "0")+ '\n')
                         file.write(i.replace("E", "3")+ '\n')
                         count += 5
+                
+                    sys.stdout.write('\rloading [#####--------------] 20%')
+                    sys.stdout.flush()
+                
 
                     for j in word:
                         #take in parameters few special char
@@ -437,24 +452,68 @@ class Pswd:
                         file.write((j + "-"+ '\n').upper())
                         file.write((j + "$"+ '\n').upper())
 
-
-                    for k in range(100):
-                        #try to detect with all numbers frm 1 to 100
-                        file.write((i + str(k) + '\n' + ".").capitalize())
-                        file.write((i + str(k) + "@"+ '\n').capitalize())
-                        file.write((i + str(k) + "!"+ '\n').capitalize())
-                        file.write((i + str(k) + "_"+ '\n').capitalize())
-                        file.write((i + str(k) + "?"+ '\n').capitalize())
-                        file.write((i + str(k) + "-"+ '\n').capitalize())
-                        file.write((i + str(k) + "$"+ '\n').capitalize())
-                        file.write((i + str(k) + '\n' + "."))
-                        file.write((i + str(k) + "@"+ '\n'))
-                        file.write((i + str(k) + "!"+ '\n'))
-                        file.write((i + str(k) + "_"+ '\n'))
-                        file.write((i + str(k) + "?"+ '\n'))
-                        file.write((i + str(k) + "-"+ '\n'))
-                        file.write((i + str(k) + "$"+ '\n'))
+                        sys.stdout.write('\rloading [##########----------] 50%')
+                        sys.stdout.flush()
                     
+                        for k in range(100):
+                            #try to detect with all numbers frm 1 to 100
+                            file.write((j + str(k) +   "."+'\n').capitalize())
+                            file.write((j + str(k) + "@"+ '\n').capitalize())
+                            file.write((j + str(k) + "!"+ '\n').capitalize())
+                            file.write((j + str(k) + "_"+ '\n').capitalize())
+                            file.write((j + str(k) + "?"+ '\n').capitalize())
+                            file.write((j + str(k) + "-"+ '\n').capitalize())
+                            file.write((j + str(k) + "$"+ '\n').capitalize())
+                            file.write((j + str(k) +  "."+ '\n' ))
+                            file.write((j + str(k) + "@"+ '\n'))
+                            file.write((j + str(k) + "!"+ '\n'))
+                            file.write((j + str(k) + "_"+ '\n'))
+                            file.write((j + str(k) + "?"+ '\n'))
+                            file.write((j + str(k) + "-"+ '\n'))
+                            file.write((j + str(k) + "$"+ '\n'))
+                
+                    sys.stdout.write('\rloading [##############------] 80%')
+                    sys.stdout.flush()
+                    for l in range(len(word)):
+                        #all upper not the first
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "."+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "@"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "!"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "_"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "?"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "-"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "$"+ '\n')
+                        file.write(word[l].replace("i", "1").upper()+ '\n')
+                        file.write(word[l].replace("a", "4").upper()+ '\n')
+                        file.write(word[l].replace("o", "0").upper()+ '\n')
+                        file.write(word[l].replace("e", "3").upper()+ '\n')
+                        file.write(word[l].replace("I", "1").upper()+ '\n')
+                        file.write(word[l].replace("A", "4").upper()+ '\n')
+                        file.write(word[l].replace("O", "0").upper()+ '\n')
+                        file.write(word[l].replace("E", "3").upper()+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper())+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ ".").replace("i", "1")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "@").replace("a", "4")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "!").replace("o", "0")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "_").replace("e", "3")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "?").replace("I", "1")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "-").replace("A", "4")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "$").replace("O", "0")+ '\n')
+                        file.write(word[l] + "123"+ '\n')
+                        file.write(word[l] + "12345678"+ '\n')
+                        file.write("123456Seven"+ '\n')
+                        file.write(word[l] + "0000"+ '\n')
+                        file.write(word[l] + "12"+ '\n')
+
+
+
+
+                        
+                    
+
+                sys.stdout.write('\r loading [####################] 100%')
+                sys.stdout.flush()
                 self.finish()
 
                             
@@ -470,13 +529,13 @@ class Pswd:
         print("\n[+]the dictionnary has been finished generated")
         print()
         print("\n[+]You can find it here", self.directory)
-        print("=>" + os.path.normpath(r"%s\word_list_generator"%(os.environ['USERPROFILE'])))
+        print(">" + os.path.normpath(r"%s\Couteau"%(os.environ['USERPROFILE'])) +f"\{self.file_name}{self.render}")
         count = 0
                                 
 
 
 if __name__ == "__main__":
-    begin = Pswd("cat doggo fishy", 5)
+    begin = Pswd("", 5)
     begin.choice()
 
 
