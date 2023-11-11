@@ -11,6 +11,7 @@ import sys
 COUTEAU  
 WORDLIST GENERATOR FOR BRUTE FORCE.
 DICTIONNARY FOR BRUTE FORCE
+@version 0.0.8
 """
 
 print("""  
@@ -53,6 +54,7 @@ class Pswd:
 
                 e or exit                                          => quit command
                 c or cls or clear                                  => clear command
+                s or start                                         => start the programm
 
                 """)    
        time.sleep(0.5)
@@ -69,7 +71,7 @@ class Pswd:
     def choice(self):
         command = input("> ")
         #beta command
-        if command == "g":
+        if command == "s":
             self.Confirmation()
             #beta command
         if command == "help":
@@ -89,39 +91,43 @@ class Pswd:
 
 
     def Confirmation(self):
-        confirm = input("Are you sure you want to start the process? Y/N: ")
-        if confirm == "Y":
-            self.Process()
-        else:  
-            exit()
-    
+        self.bday = input("Enter the birthday like this 22/09/1987 if you dont have just enter n: ")
+        if self.bday == "n" or self.bday == "N":
+            self.bday = False
+            print(self.bday)
+        self.Process()
 
-    def bday(self):
+    def birthday(self):
         #delete /
         self.bday.replace("/", "")
 
-        with open("bday.txt", "w", encoding='utf-8') as filebday:
+        with open("bday.txt", "a", encoding='utf-8') as filebday:
             #bday all changment adding to password of 1 to 5
             filebday.write(self.bday+ '\n')
             #4last digits
             filebday.write(self.bday[4:8]+ '\n')
             #4digits + years
             filebday.write(self.bday[4:8] + self.bday[2:4]+ '\n') 
-
             inverse = self.bday[4:8]
             filebday.write(inverse[::-1]+ '\n')
             filebday.write(self.bday[6:8]+self.bday[4:6]+ '\n')
-            count += 6
             self.bday == False
-            with open("{self.file_name},.,{render}", "w", encoding="utf-8") as file:
-                file.write(filebday)
-                os.remove("bday.txt")
+
+
+            print("stop")
+            with open(f"{self.file_name}{self.render}", "a", encoding="utf-8") as file:
+                shutil.copyfile('bday.txt',f"{self.file_name}{self.render}")
+
+        filebday.close()
+        os.remove("bday.txt")
 
 
 
     def Process(self):
         count = 0
         self.words = input("Enter commonly used word, separated by a space: ")
+        self.depth = int(input("Enter the depth [default:5]: "))
+
         with open(f"{self.file_name}{self.render}", "a", encoding="utf-8") as file:
             if self.depth == 1:
                 sys.stdout.write('\rloading [--------------------] 0%')
@@ -131,7 +137,7 @@ class Pswd:
                     pass
 
                 else:
-                    self.bday()
+                    self.birthday()
                 
 
                 time.sleep(0.2)
@@ -191,7 +197,7 @@ class Pswd:
                     pass
 
                 else:
-                    self.bday()
+                    self.birthday()
 
                 sys.stdout.write('\rloading [--------------------] 0%')
                 sys.stdout.flush()
@@ -247,7 +253,7 @@ class Pswd:
                     pass
 
                 else:
-                    self.bday()
+                    self.birthday()
 
                 #common root password
                 shutil.copyfile(f"{self.file_name}{self.render}", 'pswd/common-pswd3.txt')
@@ -299,7 +305,7 @@ class Pswd:
                 if self.bday == False:
                     pass
                 else:
-                    self.bday()
+                    self.birthday()
                 #common root password/ more complicated password
                 #leak db password are getting stronger with the depth argument
                 shutil.copyfile(f"{self.file_name}{self.render}", 'pswd/common-pswd4.txt')
@@ -360,31 +366,46 @@ class Pswd:
                     pass
                     
                 else:
-                    self.bday()
-                    for word in self.words:
+                    self.birthday()
+                    file.write("debut"+ '\n')
+
+                    word2 = []
+                    temp = ""
+                    self.words = self.words + " " 
+                    #print(repr(self.words))
+                    self.bday = str(self.bday).replace("/", "")
+                    print(self.bday)
+
+                    for l in self.words:
+                        if l == " ":
+                            word2.append(temp)
+                            temp = ""
+                        else:
+                            temp += l
+                    for i in word2:
                         #year
-                        file.write(word + self.bday[5:8])
+                        file.write(i + self.bday[5:8]+ '\n')
                         #2last digits year
-                        file.write(word + self.bday[6:8])
+                        file.write(i + self.bday[6:8]+ '\n')
                         #month + 2last digits year
-                        file.write(word + self.bday[2:4] + self.bday[6:8])
+                        file.write(i + self.bday[2:4] + self.bday[6:8]+ '\n')
 
-                        file.write(word + self.bday[2:4] + self.bday[0:2] + self.bday[6:8])
-                        file.write(word + self.bday[0:2] + self.bday[6:8])
-                        file.write(word + self.bday[0:2])
-                        file.write(word + self.bday[0:2] + self.bday[2:4])
+                        file.write(i + self.bday[2:4] + self.bday[0:2] + self.bday[6:8]+ '\n')
+                        file.write(i + self.bday[0:2] + self.bday[6:8]+ '\n')
+                        file.write(i + self.bday[0:2]+ '\n')
+                        file.write(i + self.bday[0:2] + self.bday[2:4]+ '\n')
                         
                         
-                        file.write((word + self.bday[5:8]).capitalize())
+                        file.write((i + self.bday[5:8]+ '\n').capitalize())
                         #2last digits year
-                        file.write((word + self.bday[6:8]).capitalize())
+                        file.write((i + self.bday[6:8]+ '\n').capitalize())
                         #month + 2last digits year
-                        file.write((word + self.bday[2:4] + self.bday[6:8]).capitalize())
+                        file.write((i + self.bday[2:4] + self.bday[6:8]+ '\n').capitalize())
 
-                        file.write((word + self.bday[2:4] + self.bday[0:2] + self.bday[6:8]).capitalize())
-                        file.write((word + self.bday[0:2] + self.bday[6:8]).capitalize())
-                        file.write((word + self.bday[0:2]).capitalize())
-                        file.write((word + self.bday[0:2] + self.bday[2:4]).capitalize())
+                        file.write((i + self.bday[2:4] + self.bday[0:2] + self.bday[6:8]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2] + self.bday[6:8]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2] + self.bday[2:4]+ '\n').capitalize())
 
 
                     
@@ -537,7 +558,6 @@ class Pswd:
 if __name__ == "__main__":
     begin = Pswd("", 5)
     begin.choice()
-
 
 
     
