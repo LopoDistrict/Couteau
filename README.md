@@ -6,7 +6,7 @@
 
 ``` 
 
-# Couteau
+# Couteau V0.0.8
 Couteau is a Hybrid worldlist/dictionnary generator that used different level of generation to adapt to password security.
 It also use, some leak + dehashed password  from secure database to guarantee the sucess of the attack
 
