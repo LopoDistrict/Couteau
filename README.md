@@ -36,6 +36,8 @@ At the begin you need to precise some attributes:
 - enter the depth (1 to 5) (1 is for low secured password)(5 is for highly secured password)
 - That's it
 
+
+
 # Exemple in windows cmd
 ```
 Microsoft Windows [version 10.0.19045.3570]
@@ -63,5 +65,12 @@ stop
 [+]You can find it here
 >C:\Users\User1\Couteau\pswd_dictionnary.txt
 
-``` 
+```
+
+# To do 
+
+- Make a new depth
+- Make new combinaison with Birthdday
+- include Name/Surname
+- Add new leak password
 
