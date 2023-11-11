@@ -36,3 +36,32 @@ At the begin you need to precise some attributes:
 - enter the depth (1 to 5) (1 is for low secured password)(5 is for highly secured password)
 - That's it
 
+# Exemple in windows cmd
+```
+Microsoft Windows [version 10.0.19045.3570]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\Users\User1\Couteau>python main.py
+
+     ______________________________ ______________________
+    .'                              | (_)     (_)    (_)  |
+  .'                                |  __________________ |
+.'_.............................____|_(                  )|
+
+launching process
+> s
+Enter the birthday like this 22/09/1987 if you dont have just enter n: 19/08/1987
+Enter commonly used word, separated by a space: yankees batman ussr
+Enter the depth [default:5]: 5
+[+]Average size for 1 word : 15ko
+[+]Average password for 1 word : 15000 lines
+stop
+19081987
+ loading [####################] 100%
+
+[+]the dictionnary has been finished generated
+[+]You can find it here
+>C:\Users\User1\Couteau\pswd_dictionnary.txt
+
+``` 
+
