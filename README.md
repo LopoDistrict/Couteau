@@ -6,7 +6,7 @@
 
 ``` 
 
-# Couteau V0.0.8
+# Couteau V0.0.9
 Couteau is a Hybrid worldlist/dictionnary generator that used different level of generation to adapt to password security.
 It also use, some leak + dehashed password  from secure database to guarantee the sucess of the attack
 
@@ -33,7 +33,7 @@ At the begin you need to precise some attributes:
 - enter s to start the programm
 - enter the birthday (19/08/1987) or n if not
 - enter commonly used password separated by a space
-- enter the depth (1 to 5) (1 is for low secured password)(5 is for highly secured password)
+- enter the depth (1 to 6) (1 is for low secured password)(5 is for highly secured password)
 - That's it
 
 
@@ -69,7 +69,7 @@ stop
 
 # To do 
 
-- Make a new depth
+~~- Make a new depth~~
 - Make new combinaison with Birthdday
 - include Name/Surname
 - Add new leak password
