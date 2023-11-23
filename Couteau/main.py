@@ -88,6 +88,43 @@ class Pswd:
             self.choice()
     
    
+    def name(self, first_name, last_name):
+        with open(f"{self.file_name}{self.render}", "a", encoding="utf-8") as file:
+            #nom + bday
+            file.write(first_name+self.bday[4:8] + '\n')
+            file.write((first_name+self.bday[4:8] + '\n').capitalize())
+            file.write(first_name+self.bday[0:2] + '\n')
+            file.write((first_name+self.bday[0:2] + '\n').capitalize())
+            file.write(first_name+self.bday[2:3] + '\n')
+            file.write((first_name+self.bday[2:3] + '\n').capitalize())
+
+            file.write((last_name+self.bday[4:8] + '\n'))
+            file.write((last_name+self.bday[4:8] + '\n').capitalize())
+            file.write((last_name+self.bday[0:2] + '\n'))
+            file.write((last_name+self.bday[0:2] + '\n').capitalize())
+            file.write((last_name+self.bday[2:3] + '\n'))
+            file.write((last_name+self.bday[2:3] + '\n').capitalize())
+
+
+            file.write(first_name+self.bday[4:8] + self.bday[2:4]+ '\n') 
+            file.write((first_name+self.bday[4:8] + self.bday[2:4]+ '\n').capitalize()) 
+            file.write(last_name+self.bday[4:8] + self.bday[2:4]+ '\n') 
+            file.write((last_name+self.bday[4:8] + self.bday[2:4]+ '\n').capitalize()) 
+            file.write(first_name+self.bday[6:8]+self.bday[4:6]+ '\n')
+            file.write((first_name+self.bday[6:8]+self.bday[4:6]+ '\n').capitalize())
+            file.write((last_name+self.bday[6:8]+self.bday[4:6]+ '\n').capitalize())
+
+
+            #nom et surnom de 1=>100 + lettre capital 
+            for i in range(100):
+                file.write(first_name + i + '\n')
+                file.write(last_name + i + '\n')
+                file.write((first_name + i + '\n').capitalize())
+                file.write((last_name + i + '\n').capitalize())
+                
+                
+                
+            
 
 
     def Confirmation(self):
@@ -526,6 +563,191 @@ class Pswd:
                         file.write("123456Seven"+ '\n')
                         file.write(word[l] + "0000"+ '\n')
                         file.write(word[l] + "12"+ '\n')
+            
+            if self.depth == 6:
+                """Last Depth of the beta [+]Strong password [-] leak db password"""
+                print("[+]Average size for 1 word : 15ko")
+                print("[+]Average password for 1 word : 15000 lines")
+
+                if self.bday == False:
+                    pass
+                    
+                else:
+                    
+                    self.birthday()
+                    file.write("debut"+ '\n')
+
+                    word2 = []
+                    temp = ""
+                    self.words = self.words + " " 
+                    #print(repr(self.words))
+                    self.bday = str(self.bday).replace("/", "")
+                    print(self.bday)
+
+                    for l in self.words:
+                        if l == " ":
+                            word2.append(temp)
+                            temp = ""
+                        else:
+                            temp += l
+                    for i in word2:
+                        #year
+                        file.write(i + self.bday[5:8]+ '\n')
+                        #2last digits year
+                        file.write(i + self.bday[6:8]+ '\n')
+                        #month + 2last digits year
+                        file.write(i + self.bday[2:4] + self.bday[6:8]+ '\n')
+
+                        file.write(i + self.bday[2:4] + self.bday[0:2] + self.bday[6:8]+ '\n')
+                        file.write(i + self.bday[0:2] + self.bday[6:8]+ '\n')
+                        file.write(i + self.bday[0:2]+ '\n')
+                        file.write(i + self.bday[0:2] + self.bday[2:4]+ '\n')
+                        
+                        
+                        file.write((i + self.bday[5:8]+ '\n').capitalize())
+                        #2last digits year
+                        file.write((i + self.bday[6:8]+ '\n').capitalize())
+                        #month + 2last digits year
+                        file.write((i + self.bday[2:4] + self.bday[6:8]+ '\n').capitalize())
+
+                        file.write((i + self.bday[2:4] + self.bday[0:2] + self.bday[6:8]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2] + self.bday[6:8]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2]+ '\n').capitalize())
+                        file.write((i + self.bday[0:2] + self.bday[2:4]+ '\n').capitalize())
+
+
+                    
+                """#common root password/ more complicated password
+                #leak db password are getting stronger with the depth argument
+                shutil.copyfile(f"{self.file_name}{self.render}", 'pswd/common-pswd4.txt')"""
+
+                count += 22
+                word = []
+                temp = ""
+
+                self.words = self.words + " " 
+
+                #print(repr(self.words))
+                sys.stdout.write('\rloading [--------------------] 0%')
+                sys.stdout.flush()
+                for l in self.words:
+                    if l == " ":
+                        word.append(temp)
+                        temp = ""
+                    else:
+                        temp += l
+                for x in word:
+                    file.write(x+self.bday+ '\n')
+                    file.write(x+self.bday[4:8]+ '\n')
+                    file.write(x+self.bday[4:8] + self.bday[2:4]+ '\n') 
+                    inverse = self.bday[4:8]
+                    file.write(x + inverse[::-1]+ '\n')
+                    file.write(x+ self.bday[6:8]+self.bday[4:6]+ '\n')
+                    file.write((x+self.bday+ '\n').capitalize())
+                    file.write(x+self.bday[4:8]+ '\n')
+                    file.write(x+self.bday[4:8] + self.bday[2:4]+ '\n') 
+                    inverse = self.bday[4:8]
+                    file.write(x + inverse[::-1]+ '\n')
+                    file.write(x+ self.bday[6:8]+self.bday[4:6]+ '\n')
+                for i in word:
+                    
+                    if count > self.limit:
+                        self.finish()
+                    else:
+                        file.write(i+ '\n')
+                        file.write(i.capitalize() + '\n')
+                        #trying to put nicknames for password
+                        file.write(i.replace("i", "1")+ '\n')
+                        file.write(i.replace("a", "4")+ '\n')
+                        file.write(i.replace("o", "0")+ '\n')
+                        file.write(i.replace("e", "3")+ '\n')
+                        file.write(i.replace("I", "1")+ '\n')
+                        file.write(i.replace("A", "4")+ '\n')
+                        file.write(i.replace("O", "0")+ '\n')
+                        file.write(i.replace("E", "3")+ '\n')
+                        count += 5
+                
+                    sys.stdout.write('\rloading [#####--------------] 20%')
+                    sys.stdout.flush()
+                
+
+                    for j in word:
+                        #take in parameters few special char
+                        file.write(j + "."+ '\n')
+                        file.write(j + "@"+ '\n')
+                        file.write(j + "!"+ '\n')
+                        file.write(j + "_"+ '\n')
+                        file.write(j + "?"+ '\n')
+                        file.write(j + "-"+ '\n')
+                        file.write(j + "$"+ '\n')
+                        file.write((j + "."+ '\n').capitalize())
+                        file.write((j + "@"+ '\n').capitalize())
+                        file.write((j + "!"+ '\n').capitalize())
+                        file.write((j + "_"+ '\n').capitalize())
+                        file.write((j + "?"+ '\n').capitalize())
+                        file.write((j + "-"+ '\n').capitalize())
+                        file.write((j + "$"+ '\n').capitalize())
+                        file.write((j + "."+ '\n').upper())
+                        file.write((j + "@"+ '\n').upper())
+                        file.write((j + "!"+ '\n').upper())
+                        file.write((j + "_"+ '\n').upper())
+                        file.write((j + "?"+ '\n').upper())
+                        file.write((j + "-"+ '\n').upper())
+                        file.write((j + "$"+ '\n').upper())
+
+                        sys.stdout.write('\rloading [##########----------] 50%')
+                        sys.stdout.flush()
+                    
+                        for k in range(100):
+                            #try to detect with all numbers frm 1 to 100
+                            file.write((j + str(k) +   "."+'\n').capitalize())
+                            file.write((j + str(k) + "@"+ '\n').capitalize())
+                            file.write((j + str(k) + "!"+ '\n').capitalize())
+                            file.write((j + str(k) + "_"+ '\n').capitalize())
+                            file.write((j + str(k) + "?"+ '\n').capitalize())
+                            file.write((j + str(k) + "-"+ '\n').capitalize())
+                            file.write((j + str(k) + "$"+ '\n').capitalize())
+                            file.write((j + str(k) +  "."+ '\n' ))
+                            file.write((j + str(k) + "@"+ '\n'))
+                            file.write((j + str(k) + "!"+ '\n'))
+                            file.write((j + str(k) + "_"+ '\n'))
+                            file.write((j + str(k) + "?"+ '\n'))
+                            file.write((j + str(k) + "-"+ '\n'))
+                            file.write((j + str(k) + "$"+ '\n'))
+                
+                    sys.stdout.write('\rloading [##############------] 80%')
+                    sys.stdout.flush()
+                    for l in range(len(word)):
+                        #all upper not the first
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "."+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "@"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "!"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "_"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "?"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "-"+ '\n')
+                        file.write(word[l][0:1]+ word[l][1:].upper()+ "$"+ '\n')
+                        file.write(word[l].replace("i", "1").upper()+ '\n')
+                        file.write(word[l].replace("a", "4").upper()+ '\n')
+                        file.write(word[l].replace("o", "0").upper()+ '\n')
+                        file.write(word[l].replace("e", "3").upper()+ '\n')
+                        file.write(word[l].replace("I", "1").upper()+ '\n')
+                        file.write(word[l].replace("A", "4").upper()+ '\n')
+                        file.write(word[l].replace("O", "0").upper()+ '\n')
+                        file.write(word[l].replace("E", "3").upper()+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper())+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ ".").replace("i", "1")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "@").replace("a", "4")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "!").replace("o", "0")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "_").replace("e", "3")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "?").replace("I", "1")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "-").replace("A", "4")+ '\n')
+                        file.write((word[l][0:1]+ word[l][1:].upper()+ "$").replace("O", "0")+ '\n')
+                        file.write(word[l] + "123"+ '\n')
+                        file.write(word[l] + "12345678"+ '\n')
+                        file.write("123456Seven"+ '\n')
+                        file.write(word[l] + "0000"+ '\n')
+                        file.write(word[l] + "12"+ '\n')
 
 
 
@@ -558,6 +780,7 @@ class Pswd:
 if __name__ == "__main__":
     begin = Pswd("", 5)
     begin.choice()
+
 
 
     
